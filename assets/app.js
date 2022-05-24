@@ -6,7 +6,12 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
+console.log('Hello Webpack Encore !')
+// assets/app.js
+
+// returns the final, public path to this file
+// path is relative to this file - e.g. assets/images/logo.png
