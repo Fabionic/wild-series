@@ -15,7 +15,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProgramController extends AbstractController
 
 {
-    #[Route('/program/', name: 'program_index')]
+    #[Route('/program', name: 'program_index')]
+
 
     public function index(): Response
 
@@ -24,16 +25,7 @@ class ProgramController extends AbstractController
         return $this->render('program/index.html.twig', [
 
             'website' => 'Wild Series',
-     
-         ]);
 
+        ]);
     }
-
-    
 }
-
-
-
-
-
-   
