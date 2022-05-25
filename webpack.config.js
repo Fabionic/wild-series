@@ -13,7 +13,19 @@ Encore
     .setPublicPath('/build')
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
-
+    .copyFiles({
+        from: './assets/images',
+        
+        // optional target path, relative to the output dir
+        to: 'images/[path][name].[ext]',
+        
+        // if versioning is enabled, add the file hash too
+        //to: 'images/[path][name].[hash:8].[ext]',
+        
+        // only copy files matching this pattern
+        //pattern: /\.(png|jpg|jpeg)$/
+        })
+        
     /*
      * ENTRY CONFIG
      *
@@ -98,19 +110,5 @@ module.exports = fullConfig;
 
 // webpack.config.js
 
-Encore
-// ...
-.setOutputPath('public/build/')
 
-.copyFiles({
-from: './assets/images',
 
-// optional target path, relative to the output dir
-to: 'images/[path][name].[ext]',
-
-// if versioning is enabled, add the file hash too
-//to: 'images/[path][name].[hash:8].[ext]',
-
-// only copy files matching this pattern
-//pattern: /\.(png|jpg|jpeg)$/
-})
