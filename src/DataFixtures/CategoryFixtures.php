@@ -12,7 +12,6 @@ use Doctrine\Persistence\ObjectManager;
 
 
 class CategoryFixtures extends Fixture
-
 {
     const CATEGORIES = [
         'Action',
