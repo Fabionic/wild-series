@@ -14,42 +14,26 @@ use Doctrine\Persistence\ObjectManager;
 
 
 class ProgramFixtures extends Fixture implements DependentFixtureInterface
-
 {
-
     public function load(ObjectManager $manager)
-
     {
-
-        $program = new Program();
-
-        $program->setTitle('Walking dead');
-
-        $program->setSynopsis('Des zombies envahissent la terre');
-
-        $program->setCategory($this->getReference('category_Action'));
-
-        $manager->persist($program);
+        foreach (CategoryFixtures::CATEGORIES as $key => $categoryName) {
+            for ($i = 0; $i < 5; $i++) {
+                $program = new Program();
+                $program->setTitle('Serie ' . $categoryName . ' #' . $i);
+                $program->setSynopsis('Lorem ipsum');
+                $program->setCategory($this->getReference('category_' . $categoryName));
+                $manager->persist($program);
+            }
+        }
 
         $manager->flush();
-
     }
-
 
     public function getDependencies()
-
     {
-
         return [
-
-          CategoryFixtures::class,
-
+            CategoryFixtures::class,
         ];
-
     }
-
-
-
 }
-
-
