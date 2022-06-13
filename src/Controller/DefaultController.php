@@ -1,36 +1,38 @@
 <?php
-
 // src/Controller/DefaultController.php
-
 namespace App\Controller;
 
-
+use App\Repository\SeasonRepository;
+use App\Repository\EpisodeRepository;
+use App\Repository\ProgramRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
 use Symfony\Component\HttpFoundation\Response;
-
 use Symfony\Component\Routing\Annotation\Route;
+
 
 
 class DefaultController extends AbstractController
 
-{
-    #[Route('/home', name: 'app_index')]
-
-    public function index(): Response
-
+{ 
+    #[Route('/', name: 'app_index')]
+    public function index(ProgramRepository $programRepository, 
+    SeasonRepository $seasonRepository, 
+    EpisodeRepository $episodeRepository): Response
     {
-
-        return $this->render('default/index.html.twig', [
-
+        $programs = $programRepository->findAll();
+        $seasons = $seasonRepository->findAll();
+        $episodes = $episodeRepository->findAll();
+        return $this->render('home/index.html.twig', [
             'website' => 'Bienvenue !',
-     
-         ]);
-
+            'nbPrograms' => count($programs),
+            'nbSeasons' => count($seasons),
+            'nbEpisodes' => count($episodes),
+        ]);
     }
+}
 
     
-}
+
 
 
 

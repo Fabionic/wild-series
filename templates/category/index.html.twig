@@ -15,17 +15,15 @@
 
 		<div>
 
-			<h2>{{ loop.index }}
-				/
-				{{ category.title }}
-				- Catégorie :
-				{{ program.category.name }}</h2>
-
-			<p>{{ category.synopsis }}</p>
-
+			<h2>
+			{{ loop.index }}/{{ category.name }}
+					
+			
+			</h2>
+		
 			{# Lien vers la fiche de la category : #}
 
-			<a href="{{ path("category_show", { id: category.id }) }}">Voir la fiche</a>
+			<a href="{{ path("category_show", { name: category.name }) }}">Voir la fiche</a>
 
 		</div>
 
@@ -35,9 +33,11 @@
 
 	{% endfor %}
 
+	<a href="{{ path('category_new') }}"> Ajouter une catégorie </a>
+
 	<a href="{{ path('app_index') }}">
 
 		Retour à l'accueil
-
+	
 	</a>
 {% endblock %}
