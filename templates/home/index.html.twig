@@ -1,0 +1,21 @@
+{# <!doctype html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title></title>
+</head>
+<body>
+   <h1> {{ Welcome }} </h1>
+</body>
+</html> #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Wild Series
+{% endblock %}
+
+{% block body %}
+<img src="{{ asset('build/images/logo.png') }}" alt=""/>
+<h1>Bienvenue sur Wild series, le site de vos séries préférées !</h1>
+	{# <img src="{{ asset('build/images/test.jpeg') }}" alt=""/> #}
+{% endblock %}
